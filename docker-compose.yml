@@ -1,0 +1,18 @@
+services:
+  db:
+    image: motorway-test-backend
+    container_name: motorway-test-backend
+    build:
+      context: .
+      target: motorway-test-backend
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=motorway
+    ports:
+      - 5432:5432
+  redisbarber:
+    image: redis:alpine
+    container_name: motorway-test-backend-redis
+    ports:
+      - '6379:6379'
